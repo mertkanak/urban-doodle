@@ -1,6 +1,11 @@
 package com.example.grokapp.navigation
 
+import kotlinx.serialization.Serializable
+
 object Routes {
-    const val LOGIN = "login"
-    const val HOME = "home"
+    @Serializable
+    data object LOGIN
+
+    @Serializable
+    data class HOME(val isim: String)
 }

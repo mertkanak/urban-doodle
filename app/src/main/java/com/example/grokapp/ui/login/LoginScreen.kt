@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun LoginScreen(
     modifier: Modifier = Modifier ,
-    onLoginClicked : () -> Unit
+    onLoginClicked : (String) -> Unit
 ) {
     var text by remember { mutableStateOf("") }
 
@@ -38,7 +38,8 @@ fun LoginScreen(
         Spacer(modifier = modifier.height(12.dp))
 
         Button(
-            onClick = onLoginClicked
+            onClick = { onLoginClicked(text) },
+            enabled = text.isNotBlank()
         ) {
             Text("Giriş Yap")
         }
@@ -50,7 +51,7 @@ fun LoginScreen(
 @Composable
 private fun TextFieldExample(
     text : String,
-    onValueChange : (String) -> Unit
+    onValueChange : (String) -> Unit,
 ) {
     TextField(
         value = text,
