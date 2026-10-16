@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# TODO [Aşama 8] Geniş -keep kuralı ekleme. R8 Configuration Analyzer gereksiz
+# ve fazla geniş kuralları, bir kuralın diğerini yuttuğu durumları işaret eder.
+# İnceleme prompt'u: "Analyze the R8 configuration".
+# Araştır: https://developer.android.com/topic/performance/app-optimization/r8-configuration-analyzer
+# Araştır: https://developer.android.com/topic/performance/app-optimization/enable-app-optimization
