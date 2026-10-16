@@ -17,6 +17,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // TODO [Aşama 3] Greeting yerine AppNavHost bağla. Bu çağrı scaffold
+        // derlensin diye duruyor. Navigasyonu MainActivity'ye gömme.
+        // Araştır: https://developer.android.com/guide/navigation
         setContent {
             GrokAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->

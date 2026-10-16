@@ -1,10 +1,13 @@
 [versions]
 agp = "9.0.1"
-coreKtx = "1.19.0"
+# core-ktx 1.19.0 ve lifecycle-runtime 2.11.0 minCompileSdk 37 ve AGP 9.1.0 ister.
+# Bu proje compileSdk 36 ve AGP 9.0.1'de kalır; bu yüzden bir alt sürüm duruyor.
+# Araştır: https://developer.android.com/build/releases/agp-9-0-0-release-notes
+coreKtx = "1.18.0"
 junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
-lifecycleRuntimeKtx = "2.11.0"
+lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.13.0"
 kotlin = "2.0.21"
 composeBom = "2024.09.00"
@@ -28,4 +31,41 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# TODO [Aşama 1] Version catalog bu dosyadır. Yeni kütüphane üç yerde durur:
+# [versions] içinde sürüm adı, [libraries] veya [plugins] içinde koordinat,
+# app/build.gradle.kts içinde libs.* referansı. Sürümü buraya hazır yazma;
+# release sayfasından doğrula. Hazır Hilt, KSP, serialization, Navigation,
+# Room veya Retrofit satırı kasıtlı olarak yok.
+# Araştır: https://developer.android.com/build/migrate-to-catalogs
+#
+# TODO [Aşama 2] Bakılacak artifact'ler (eklenmedi, sürüm yok):
+# lifecycle-viewmodel-compose, lifecycle-runtime-compose.
+# Araştır: https://developer.android.com/topic/libraries/architecture/viewmodel
+# Araştır: https://developer.android.com/develop/ui/compose/state
+#
+# TODO [Aşama 3] Type-safe route için navigation-compose ve Kotlin serialization
+# plugin'i gerekecek. İkisi de EKLENMEDİ. @Serializable yazmak derlemeyi kırar.
+# AGP 9 built-in Kotlin kullanıyor. org.jetbrains.kotlin.android eklemeden
+# önce AGP 9 sürüm notunu oku.
+# Araştır: https://developer.android.com/guide/navigation/design/type-safety
+# Araştır: https://developer.android.com/build/releases/agp-9-0-0-release-notes
+#
+# TODO [Aşama 4] Hilt ve KSP eklenmedi. kapt kurulumunu kopyalama.
+# Araştır: https://developer.android.com/training/dependency-injection/hilt-android
+# Araştır: https://developer.android.com/build/migrate-to-ksp
+#
+# TODO [Aşama 5] Süre kanıtı için kotlinx-coroutines-test artifact'ine bak.
+# Eklenmedi. Sürümü kendin doğrula.
+# Araştır: https://developer.android.com/kotlin/coroutines/test
+#
+# TODO [Aşama 6] Retrofit, OkHttp ve Room eklenmedi. Room KSP kullanır;
+# Aşama 4'teki KSP kararıyla birlikte ele al.
+# Araştır: https://developer.android.com/training/data-storage/room
+# Araştır: https://developer.android.com/topic/architecture/data-layer/offline-first
+#
+# TODO [Aşama 7] Macrobenchmark ve Baseline Profile ayrı modül ister.
+# Bağımlılığı bu tek modüllü scaffold'a ekleme.
+# Araştır: https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview
+# Araştır: https://developer.android.com/topic/performance/baselineprofiles/overview
 

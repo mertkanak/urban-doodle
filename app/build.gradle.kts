@@ -3,6 +3,22 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+// TODO [Aşama 1] Plugin listesi şimdilik yalnız android.application ve
+// kotlin.compose. Yeni plugin'i önce gradle/libs.versions.toml [plugins]
+// bölümüne yaz, sonra burada alias ile uygula. Kök build.gradle.kts içinde
+// apply false gerekir. Sürümü catalog dışında tekrarlama.
+// Araştır: https://developer.android.com/build/migrate-to-catalogs
+//
+// TODO [Aşama 3] Kotlin serialization plugin'i eklenmedi. Type-safe route
+// için önce şu sayfayı oku, sonra catalog'a kendin ekle:
+// https://developer.android.com/guide/navigation/design/type-safety
+//
+// TODO [Aşama 4] Hilt ve KSP plugin'leri eklenmedi. kapt ekleme. AGP 9
+// built-in Kotlin kullanıyor; eski Kotlin Android plugin satırını kopyalama.
+// Araştır: https://developer.android.com/training/dependency-injection/hilt-android
+// Araştır: https://developer.android.com/build/migrate-to-ksp
+// Araştır: https://developer.android.com/build/releases/agp-9-0-0-release-notes
+
 android {
     namespace = "com.example.grokapp"
     compileSdk {
@@ -38,6 +54,17 @@ android {
 }
 
 dependencies {
+    // TODO [Aşama 2] lifecycle-viewmodel-compose ve lifecycle-runtime-compose
+    // burada yok. Catalog TODO'sundan sonra libs referansı ile ekle.
+    // TODO [Aşama 3] navigation-compose ve kotlinx-serialization-json yok.
+    // TODO [Aşama 4] Hilt artifact'leri yok.
+    // TODO [Aşama 5] kotlinx-coroutines-test, testImplementation olarak yok.
+    // TODO [Aşama 6] Retrofit, OkHttp ve Room yok.
+    // TODO [Aşama 7] Macrobenchmark ve Baseline Profile bağımlılığı yok.
+    //   Resmi sayfa bunları ayrı bir test modülünde kurar. O modül, Aşama 8'deki
+    //   feature bölünmesi değildir; feature modülü açma. Kurulumu sayfadan yap.
+    //   https://developer.android.com/topic/performance/benchmarking/macrobenchmark-overview
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
